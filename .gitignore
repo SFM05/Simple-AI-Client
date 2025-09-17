@@ -1,0 +1,42 @@
+# Qt Creator generated files
+*.txt.user
+*.txt.user.*
+autotest*
+
+# Build directories
+build/
+build-*/
+release/
+debug/
+
+# Compiled object files
+*.o
+*.obj
+
+# Precompiled headers
+*.gch
+*.pch
+
+# Generated moc files
+moc_*.cpp
+moc_*.h
+
+# Generated ui files
+ui_*.h
+
+# Generated qrc files
+qrc_*.cpp
+
+# MacOS
+.DS_Store
+
+# Windows
+*.exe
+*.dll
+*.lib
+*.msi
+*.cab
+
+# Linux
+*.so
+*.a
