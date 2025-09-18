@@ -31,6 +31,8 @@ ChatWidget::ChatWidget(QListWidget *ConversationBox,
 void ChatWidget::loadConversation(const QString &conversationId)
 {
     if (conversationId == "") {
+        m_titleLabel->setText("");
+        m_listWidget->clear();
         return;
     }
 

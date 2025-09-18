@@ -110,6 +110,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 初始化当前会话
     ui->ConversationBox->clear();
+    ui->InterpretButton->setEnabled(false);
     // 样式优化：圆角与背景
     setStyleSheet("QListWidget, QTextBrowser, QComboBox, QPushButton {"
                   "  border-radius: 8px;"
@@ -253,6 +254,8 @@ void MainWindow::on_SendButton_clicked()
 
     conv.add_message(Message(Message_Inf::Assistant, provider_id, model_id));
     ui->ConversationList->setEnabled(false);
+    ui->SendButton->setEnabled(false);
+    ui->InterpretButton->setEnabled(true);
 
     m_requestInProgress = true;
     ApiClient::instance()->send_request(url, key, external_model_name, conv, prompt);
@@ -262,6 +265,8 @@ void MainWindow::on_Finished(Message_Inf::Status status,int tokens)
 {
     m_requestInProgress = false;
     ui->ConversationList->setEnabled(true);
+    ui->SendButton->setEnabled(true);
+    ui->InterpretButton->setEnabled(false);
     auto &conv = ConversationManager::instance().get_conversation(m_currentConversationId);
     conv.get_last_message().set_status(status);
     conv.get_last_message().set_tokens(tokens);
